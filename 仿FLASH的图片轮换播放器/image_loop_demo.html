@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>仿FLASH的图片轮换效果 —— www.miaov.com 妙味课堂</title>
-<link rel="stylesheet" type="text/css" href="miao_style.css">
-<script src="../move.js"></script>
+<title>仿FLASH的图片轮换效果</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="move.js"></script>
 <script>
 function getByClass(oParent, sClass)
 {
@@ -50,6 +50,7 @@ window.onload=function ()
 	oBtnPrev.onmouseout=oMarkLeft.onmouseout=function ()
 	{
 		startMove(oBtnPrev, 'opacity', 0);
+		
 	}
 	
 	oBtnNext.onmouseover=oMarkRight.onmouseover=function ()
@@ -60,6 +61,7 @@ window.onload=function ()
 	oBtnNext.onmouseout=oMarkRight.onmouseout=function ()
 	{
 		startMove(oBtnNext, 'opacity', 0);
+		
 	}
 
 	//小图点击，大图显示
@@ -111,8 +113,19 @@ window.onload=function ()
 				startMove(oSmallUl, 'left', -(iNow-1)*aSmallLi[0].offsetWidth);
 			}
 		}
-		
-		oBtnPrev.onclick=function ()
+
+		function moveRight()
+		{
+			iNow++;
+			if(iNow==aSmallLi.length)
+			{
+				iNow=0;
+			}
+			
+			tab();
+		}
+
+		function moveLeft()
 		{
 			iNow--;
 			if(iNow==-1)
@@ -123,17 +136,18 @@ window.onload=function ()
 			tab();
 		}
 		
+		oBtnPrev.onclick=function ()
+		{
+			moveLeft();
+		}
+		
 		oBtnNext.onclick=function ()
 		{
-			iNow++;
-			if(iNow==aSmallLi.length)
-			{
-				iNow=0;
-			}
-			
-			tab();
+			moveRight();
 		}
 	}
+
+
 }
 </script>
 </head>
@@ -144,8 +158,8 @@ window.onload=function ()
 		<div class="prev"></div>
 		<div class="next"></div>
 
-		<div class="text">加载图片说明……</div>
-		<div class="length">计算图片数量……</div>
+		<!-- <div class="text">加载图片说明……</div> -->
+		<!-- <div class="length">计算图片数量……</div> -->
 		
 		<a class="mark_left" href="javascript:;"></a>
 		<a class="mark_right" href="javascript:;"></a>
