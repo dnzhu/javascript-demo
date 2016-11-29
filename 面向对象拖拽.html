@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <style type="text/css">
+    #div1 {width: 100px;height: 100px;background: #ccc;position:absolute;}
+    #div2 {width: 100px;height: 100px;background: #ccc;position:absolute;}
+    </style>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+        window.onload = function()
+        {
+            new Drag('div1');
+            new Drag('div2');
+        }
+        function Drag(id)
+        {
+            var _that = this;
+            this.disX = 0;
+            this.disY = 0;
+            this.oDiv = document.getElementById(id);
+            this.oDiv.onmousedown = function(){
+                _that.fnDown();
+            };
+        }
+
+        Drag.prototype.fnDown = function(ev)
+        {
+            var _that = this;
+            var event = ev ||window.event;
+            this.disX = event.clientX - this.oDiv.offsetLeft;
+            this.disY = event.clientY = this.oDiv.offsetTop;
+            document.onmousemove = function(){
+                _that.fnMove();
+            };
+            document.onmouseup = function(){
+                _that.fnUp();
+            };
+        };
+
+        Drag.prototype.fnMove = function(ev)
+        {
+            //var oEvent=ev||event;
+            var event = ev ||window.event;
+            this.oDiv.style.left = event.clientX - this.disX + 'px';
+            this.oDiv.style.top = event.clientY - this.disY + 'px';
+        };
+        Drag.prototype.fnUp = function()
+        {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+        </script>
+    </head>
+    <body>
+    <div id="div1"></div>
+    <div id="div2">xcgsdf</div>
+    </body>
+</html>
