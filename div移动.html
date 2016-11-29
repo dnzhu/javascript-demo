@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style type="text/css">
+
+            #div1{
+                width:100px;
+                height:100px;
+                background:#ccc;
+                position: absolute;
+                left:0px;
+                top:40px;
+            }
+        </style>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+        var timer = null;
+        window.onload = function()
+        {
+            var obj_btn1 = document.getElementById("btn1");
+            obj_btn1.onclick = function()
+            {
+                startMove();
+            } 
+        }
+        function startMove()
+        {
+            var obj_div = document.getElementById("div1");
+
+            clearInterval(timer);
+            timer=setInterval(function(){
+                var speed = 10;
+                if(obj_div.offsetLeft>=300){
+                    clearInterval(timer);
+                }
+                obj_div.style.left = obj_div.offsetLeft+speed+'px';
+            }, 30);
+        }
+        </script>
+    </head>
+    <body>
+    <input type="button" id="btn1" value="移动" />
+        <div id="div1"></div>
+    </body>
+</html>

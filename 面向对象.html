@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+        //js 面向对象的写法，构造函数中添加属性和原型链上添加方法
+        function CreatePerson(name,sex)
+        {
+            this.name = name;
+            this.sex = sex;
+        };
+
+        CreatePerson.prototype.showName= function()
+        {
+            alert(this.name);
+        };
+        CreatePerson.prototype.showSex = function()
+        {
+            alert(this.sex);
+        };
+        var p1 = new CreatePerson('jim','man');
+        var p2 = new CreatePerson('lsi','famale');
+
+        
+
+        p1.showName();
+        p1.showSex();
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

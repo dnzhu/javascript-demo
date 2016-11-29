@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+        window.onload = function ()
+        {
+            var txt = document.getElementById("txt");
+            txt.onkeydown = function(ev)
+            {
+
+                var even = ev || event;
+                //alert(even.keyCode);
+                if(even.keyCode!=8 |(even.keyCode<48 || even.keyCode>57)){
+                    //return false;
+                }
+            }
+        }
+        </script>
+    </head>
+    <body>
+    <input type="tel" id="txt"/>
+    </body>
+</html>

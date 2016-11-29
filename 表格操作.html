@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+        window.onload = function()
+        {
+            var oTab = document.getElementById("tab1");
+            //获取huodong
+            //alert(oTab.getElementsByTagName("tbody")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerHTML);
+            //oTab.tBodies  //获取所有的tbody
+            //rows    //获取所有的行
+            //cells    获取所有的列（单元格）
+            //alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);
+            var oldColor = '';
+            var i=0;
+            for(i=0;i < oTab.tBodies[0].rows.length;i++)
+            {
+                oTab.tBodies[0].rows[i].style.background = i%2 ? '#ccc':'';
+                oTab.tBodies[0].rows[i].index = i;
+                oTab.tBodies[0].rows[i].onmouseover =function()
+                {
+                    oldColor = this.style.background;
+                    this.style.background = 'yellow';
+                };
+                oTab.tBodies[0].rows[i].onmouseout =function()
+                {
+                    this.style.background = oldColor;
+                    //this.style.background = this.index %2 ? '#ccc': '';
+                };
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <table border="1" width="400" id="tab1">
+            <thead>
+                <td>ID</td>
+                <td>name</td>
+                <td>action</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>lei</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>huodong</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>jim</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

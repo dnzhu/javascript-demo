@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            #div1 {width:100px; height:100px; background:red; position:absolute; right:0;}
+        </style>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+        window.onscroll = function()
+        {
+            var obj_div1 = document.getElementById("div1");
+            var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+            //obj_div1.style.top=scrollTop+(document.documentElement.clientHeight-obj_div1.offsetHeight)/2+'px';
+            var pos = scrollTop+(document.documentElement.clientHeight-obj_div1.offsetHeight)/2;
+            startMove(parseInt(pos));
+        }
+        var timer = null;
+        function startMove(target)
+        {
+            var obj_div1 = document.getElementById("div1");
+            var txt1 = document.getElementById("txt1");
+
+            clearInterval(timer);
+            timer = setInterval(function(){
+                var speed = (target-obj_div1.offsetTop)/6;
+
+                speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+                
+                if(obj_div1.offsetTop==target)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    obj_div1.style.top = obj_div1.offsetTop+speed+'px';   
+                }
+                txt1.value=obj_div1.offsetTop+',目标：'+target;
+            }, 30);
+        }
+        </script>
+    </head>
+    <body style="height:2000px">
+        <input id="txt1" type="text" style="position:fixed; top:20px;" />
+        <div id="div1"></div>
+    </body>
+</html>

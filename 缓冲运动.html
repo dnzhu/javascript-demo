@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            #div1 {width:100px; height:100px; position:absolute; background:#aaa; left:0; top:50px;}
+        </style>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+        var timer = null;
+        function startMove(target)
+        {
+            var obj_div1 = document.getElementById("div1");
+            clearInterval(timer);
+            timer = setInterval(function(){
+                //缓冲运动的关键在于计算速度，越来越慢
+                var speed = (target-obj_div1.offsetLeft)/8;
+                speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+                if(obj_div1.offsetLeft>=300)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    obj_div1.style.left = obj_div1.offsetLeft+speed+'px';
+                }
+            }, 30);
+            
+        }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="开始运动" onclick="startMove(300)" />
+        <div id="div1"></div>
+    </body>
+</html>
